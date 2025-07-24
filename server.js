@@ -2,8 +2,8 @@ const express = require("express")
 
 const app = express()
 
-app.listen (3000, ()=>{
-    console.log("listening t0 3000 port")
+app.listen(3000, () => {
+  console.log("listening t0 3000 port")
 })
 
 const RESTAURANT = {
@@ -12,7 +12,7 @@ const RESTAURANT = {
   address: '742 Evergreen Rd, Mapleview, OS 45502',
   phone: '555-321-9876',
   menu: [
-    { 
+    {
       id: 1,
       name: 'Quantum Quinoa Mushroom Burger',
       price: 13.00,
@@ -20,7 +20,7 @@ const RESTAURANT = {
       category: 'mains',
       details: 'A vegetarian burger made with a quinoa and mushroom patty, it will take you to another realm.'
     },
-    { 
+    {
       id: 2,
       name: 'Binary Berry Cheesecake',
       price: 10.11,
@@ -28,7 +28,7 @@ const RESTAURANT = {
       category: 'desserts',
       details: 'A creamy cheesecake bursting with flavor. A mix of berries in every byte.'
     },
-    { 
+    {
       id: 3,
       name: 'Recursive Rigatoni',
       price: 17.00,
@@ -36,7 +36,7 @@ const RESTAURANT = {
       category: 'mains',
       details: 'A classic rigatoni pasta dish, layered with rich tomato sauce and herbs. You\'ll keep coming back for more.'
     },
-    { 
+    {
       id: 4,
       name: 'Pumpkin Pi Squared',
       price: 3.14,
@@ -44,7 +44,7 @@ const RESTAURANT = {
       category: 'desserts',
       details: 'A delightful pumpkin dessert, squared and spiced to perfection.'
     },
-    { 
+    {
       id: 5,
       name: 'Fibonacci String Bean Fries',
       price: 11.23,
@@ -55,22 +55,23 @@ const RESTAURANT = {
   ]
 }
 
-app.get("/", (req, res)=> {
-    res.render("home.ejs",RESTAURANT )
+app.get("/", (req, res) => {
+  res.render("home.ejs", RESTAURANT)
 })
 
-app.get("/menu", (req,res)=>{
-    console.log(req)
-    res.render("menu.ejs", menu = RESTAURANT.menu)
+app.get("/menu", (req, res) => {
+  console.log(req)
+  res.render("menu.ejs", menu = RESTAURANT.menu) //q: is it allows array? because it does work
 })
 
-app.get("/menu/:category", (req, res)=> {
-    console.log(req)
-    const filterMenu = RESTAURANT.menu.filter((item) => {
-        return item.category == req.params.category
-    })
-    console.log(filterMenu)
+app.get("/menu/:category", (req, res) => {
+  // console.log(req)
+  const filterMenu = RESTAURANT.menu.filter((item) => {
+    console.log(item)
+    return item.category == req.params.category
+  })
+  console.log(filterMenu)
+  const category = req.params.category
 
-
-    res.render("category.ejs", {filterMenu })
+  res.render("category.ejs", { filterMenu , category})
 })

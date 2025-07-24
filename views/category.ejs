@@ -8,13 +8,13 @@
 <body>
     <%- include('./partials/nav.ejs')%>
     
-    <% filterMenu.find((item) => { %>
-         <h1><%= item.category%></h1>
-    <% }) %>
+  
+         <h1><%= category%></h1>
+    
 
     <% filterMenu.forEach((item) => { %>
         <%if(item.rating === 5){%>
-            <p><strong>⭐name: </strong><%= item.name%><br>
+            <p><strong>name: </strong><%= item.name%>⭐<br>
         <%} else{%>
             <p><strong>name: </strong><%= item.name%><br>
         <%}%>

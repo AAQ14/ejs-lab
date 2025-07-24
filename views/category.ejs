@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/nav.ejs')%>
+    
+    <% filterMenu.find((item) => { %>
+         <h1><%= item.category%></h1>
+    <% }) %>
+
+    <% filterMenu.forEach((item) => { %>
+        <%if(item.rating === 5){%>
+            <p><strong>⭐name: </strong><%= item.name%><br>
+        <%} else{%>
+            <p><strong>name: </strong><%= item.name%><br>
+        <%}%>
+        <strong>price: </strong><%= item.price%>
+        <strong>rating: </strong><%= item.rating%>
+        <strong>details:</strong> <%= item.details%></p>
+    <%})%>
+</body>
+</html>

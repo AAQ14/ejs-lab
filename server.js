@@ -2,9 +2,7 @@ const express = require("express")
 
 const app = express()
 
-app.listen(3000, () => {
-  console.log("listening t0 3000 port")
-})
+
 
 const RESTAURANT = {
   name: 'The Green Byte Bistro',
@@ -74,4 +72,9 @@ app.get("/menu/:category", (req, res) => {
   const category = req.params.category
 
   res.render("category.ejs", { filterMenu , category})
+})
+
+
+app.listen(3000, () => {
+  console.log("listening t0 3000 port")
 })

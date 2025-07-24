@@ -3,7 +3,6 @@ const express = require("express")
 const app = express()
 
 
-
 const RESTAURANT = {
   name: 'The Green Byte Bistro',
   isOpen: true,
@@ -58,8 +57,9 @@ app.get("/", (req, res) => {
 })
 
 app.get("/menu", (req, res) => {
-  console.log(req)
-  res.render("menu.ejs", menu = RESTAURANT.menu) //q: is it allows array? because it does work
+  // console.log(req)
+  res.render("menu.ejs", {menu : RESTAURANT.menu}) 
+  console.log(RESTAURANT.menu)
 })
 
 app.get("/menu/:category", (req, res) => {
@@ -71,7 +71,7 @@ app.get("/menu/:category", (req, res) => {
   console.log(filterMenu)
   const category = req.params.category
 
-  res.render("category.ejs", { filterMenu , category})
+  res.render("category.ejs", { filterMenu , category}) 
 })
 
 
